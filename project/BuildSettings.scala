@@ -28,7 +28,7 @@ object BuildSettings {
   )
 
   lazy val dockerSettings =
-    Seq(packageName in Docker := "snowplow/sqs2kinesis", dockerExposedPorts ++= Seq(8080), dockerUpdateLatest := true)
+    Seq(packageName in Docker := "fsantos9/sqs2kinesis", dockerExposedPorts ++= Seq(8080), dockerUpdateLatest := true)
 
   lazy val resolverSettings =
     resolvers ++= Seq(

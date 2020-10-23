@@ -16,7 +16,7 @@ package com.snowplowanalytics.sqs2kinesis
 import akka.actor.ActorSystem
 import com.typesafe.scalalogging.LazyLogging
 import com.typesafe.config.ConfigFactory
-import io.sentry.Sentry
+//import io.sentry.Sentry
 
 object Main extends App with LazyLogging {
 
@@ -25,18 +25,18 @@ object Main extends App with LazyLogging {
     val conf              = ConfigFactory.load().getConfig("sqs2kinesis")
     val sqsQueue          = conf.getString("sqs-queue")
     val kinesisStreamName = conf.getString("kinesis-stream-name")
-    val sentryDsn         = conf.getString("sentry-dsn")
+//    val sentryDsn         = conf.getString("sentry-dsn")
 
     val config = Sqs2KinesisConfig(
       sqsQueue,
-      kinesisStreamName,
-      sentryDsn
+      kinesisStreamName
+//      sentryDsn
     )
     logger.info(s"config: $config")
     config
   }
 
-  Sentry.init(sqs2KinesisConfig.sentryDsn)
+//  Sentry.init(sqs2KinesisConfig.sentryDsn)
 
   implicit val system: ActorSystem = ActorSystem()
 
